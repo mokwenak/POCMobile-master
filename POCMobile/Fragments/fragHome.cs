@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
 using Android.Provider;
-using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Esri.ArcGISRuntime.Geometry;
-using ZXing.Mobile;
+using System;
 
 namespace POCMobile.Fragments
 {
-    public class fragHome : Android.Support.V4.App.DialogFragment
+  public class fragHome : Android.Support.V4.App.DialogFragment
     {
         ImageView imgView;
         EditText txtBarcode;
-        MapPoint _point;
+        //MapPoint _point;
         TextView _txtLocation;
         Context _context;
     
@@ -64,7 +57,7 @@ namespace POCMobile.Fragments
             btn.Click += Btn_Click;
 
             Button btnScan = view.FindViewById<Button>(Resource.Id.btnScan);
-            btnScan.Click += BtnScan_Click;
+            //btnScan.Click += BtnScan_Click;
 
             Button btnCancel = view.FindViewById<Button>(Resource.Id.btnCancel);
             btnCancel.Click += (o, e) =>
@@ -86,18 +79,18 @@ namespace POCMobile.Fragments
 
         
 
-        private async void  BtnScan_Click(object sender, EventArgs e)
-        {
+        //private async void  BtnScan_Click(object sender, EventArgs e)
+        //{
 
-            var MScanner = new MobileBarcodeScanner(_context);
-            var Result = await MScanner.Scan();
-            if (Result == null)
-            {
-                return;
-            }
-            //get the bar code text here 
-            txtBarcode.Text = Result.Text;
-        }
+        //    //var MScanner = new MobileBarcodeScanner(_context);
+        //    var Result = await MScanner.Scan();
+        //    if (Result == null)
+        //    {
+        //        return;
+        //    }
+        //    //get the bar code text here 
+        //    txtBarcode.Text = Result.Text;
+        //}
 
         private void Btn_Click(object sender, EventArgs e)
         {

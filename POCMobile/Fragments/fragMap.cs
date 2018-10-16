@@ -1,40 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Locations;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Esri.ArcGISRuntime;
-using Esri.ArcGISRuntime.Data;
-using Esri.ArcGISRuntime.Geometry;
-using Esri.ArcGISRuntime.Mapping;
-using Esri.ArcGISRuntime.Security;
-using Esri.ArcGISRuntime.Symbology;
-using Esri.ArcGISRuntime.UI;
-using Esri.ArcGISRuntime.UI.Controls;
+using System;
+using System.Linq;
 
 namespace POCMobile.Fragments
 {
-    public class fragMap : Android.Support.V4.App.Fragment, View.IOnTouchListener, ILocationListener
+  public class fragMap : Android.Support.V4.App.Fragment,  ILocationListener
     {
         bool zoomtoLocation = false;
         LocationManager locMgr;
         string locationProvider;
-        MapView _mapView;
+        //MapView _mapView;
         MainActivity _mainActivity;
         FragLocationDialog _dialogLocation;
         FloatingActionButton _flbtnAdd;
         FloatingActionButton _flbtrack;
-        Esri.ArcGISRuntime.Mapping.Map _map;
-        GraphicsOverlay _graphicOverlay;
+        //Esri.ArcGISRuntime.Mapping.Map _map;
+        //GraphicsOverlay _graphicOverlay;
         public fragMap()
         {
 
@@ -57,7 +45,7 @@ namespace POCMobile.Fragments
             View view = inflater.Inflate(Resource.Layout.uiMap, container, false);
           
         
-            _mapView = view.FindViewById<MapView>(Resource.Id.MyMapView);
+            //_mapView = view.FindViewById<MapView>(Resource.Id.MyMapView);
 
             this._flbtnAdd = view.FindViewById(Resource.Id.flbtnAdd) as FloatingActionButton;
             this._flbtnAdd.Click += _flbtnAdd_Click;
@@ -72,7 +60,7 @@ namespace POCMobile.Fragments
                 zoomtoLocation = !zoomtoLocation;
                 if (zoomtoLocation)
                 {
-                    _mapView.SetViewpointScaleAsync(2150);
+                    //_mapView.SetViewpointScaleAsync(2150);
                     GetCurrentLcoation();
                 }
             };
@@ -84,44 +72,44 @@ namespace POCMobile.Fragments
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
             base.OnActivityCreated(savedInstanceState);
-            Initialize();
+            //Initialize();
             GetCurrentLcoation();
 
         }
 
-        private void Initialize()
-        {
+        //private void Initialize()
+        //{
             
-            this._map = new Map();
-            _map.InitialViewpoint = new Viewpoint(InitalExtent);
+        //    //this._map = new Map();
+        //    //_map.InitialViewpoint = new Viewpoint(InitalExtent);
 
-            var _base = new ArcGISMapImageLayer(new Uri(Config.BASE_SERVICE_URL));
-            _map.Basemap.BaseLayers.Add(_base);
+        //    //var _base = new ArcGISMapImageLayer(new Uri(Config.BASE_SERVICE_URL));
+        //    //_map.Basemap.BaseLayers.Add(_base);
 
-            this._mapView.GeoViewTapped += _mapView_GeoViewTapped;
-            this._mapView.Map = _map;
-            //this._mapView.Map.MaxScale = 100;
+        //    //this._mapView.GeoViewTapped += _mapView_GeoViewTapped;
+        //    //this._mapView.Map = _map;
+        //    //this._mapView.Map.MaxScale = 100;
 
-            AddGraphicOverlay();
+        //    AddGraphicOverlay();
 
-        }
-        private Envelope InitalExtent
-        {
-            get
-            {
-                Envelope initialLocation = new Envelope(16.451910000000055, -34.83416999999997, 32.944980000000044, -22.12502999999998, new Esri.ArcGISRuntime.Geometry.SpatialReference(4148));
-                return initialLocation;
-            }
-        }
-        private void AddGraphicOverlay()
-        {
+        //}
+        ////private Envelope InitalExtent
+        //{
+        //    get
+        //    {
+        //        Envelope initialLocation = new Envelope(16.451910000000055, -34.83416999999997, 32.944980000000044, -22.12502999999998, new Esri.ArcGISRuntime.Geometry.SpatialReference(4148));
+        //        return initialLocation;
+        //    }
+        //}
+        //private void AddGraphicOverlay()
+        //{
 
-            _graphicOverlay = new GraphicsOverlay();
-            if (_mapView.GraphicsOverlays.Count > 0)
-                _mapView.GraphicsOverlays.RemoveAt(0);
-            _mapView.GraphicsOverlays.Add(_graphicOverlay);
+        //    _graphicOverlay = new GraphicsOverlay();
+        //    if (_mapView.GraphicsOverlays.Count > 0)
+        //        _mapView.GraphicsOverlays.RemoveAt(0);
+        //    _mapView.GraphicsOverlays.Add(_graphicOverlay);
 
-        }
+        //}
 
         private void _flbtnAdd_Click(object sender, EventArgs e)
         {
@@ -132,28 +120,28 @@ namespace POCMobile.Fragments
             fragement.Show(trans, "add");
         }
 
-        private async void _mapView_GeoViewTapped(object sender, GeoViewInputEventArgs e)
-        {
-            try
-            {               
+        //private async void _mapView_GeoViewTapped(object sender, GeoViewInputEventArgs e)
+        //{
+        //    try
+        //    {               
                 
-                        CreateNewFeature(e.Location);               
+        //                CreateNewFeature(e.Location);               
              
-            }
-            catch (Exception ex)
-            {
-                _mainActivity.RunOnUiThread(() =>
-                {
-                    ShowToastMessage(ex.Message);
-                });
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _mainActivity.RunOnUiThread(() =>
+        //        {
+        //            ShowToastMessage(ex.Message);
+        //        });
+        //    }
 
 
-        }
-        private void CreateNewFeature(MapPoint point)
-        {
+        //}
+        //private void CreateNewFeature(MapPoint point)
+        //{
            
-        }
+        //}
 
         private void ShowToastMessage(string toastMessage)
         {
@@ -200,8 +188,8 @@ namespace POCMobile.Fragments
         {
             CurrentLocation.Latitude = location.Latitude;
             CurrentLocation.Longitude = location.Longitude;
-            MapPoint point = new MapPoint(location.Longitude, location.Latitude, new Esri.ArcGISRuntime.Geometry.SpatialReference(4148));
-            UpdateUserLocationOnMap(point);
+            //MapPoint point = new MapPoint(location.Longitude, location.Latitude, new Esri.ArcGISRuntime.Geometry.SpatialReference(4148));
+            //UpdateUserLocationOnMap(point);
         }
 
         public void OnProviderDisabled(string provider)
@@ -218,39 +206,39 @@ namespace POCMobile.Fragments
         {
 
         }
-        public void UpdateUserLocationOnMap(MapPoint point)
-        {
+        //public void UpdateUserLocationOnMap(MapPoint point)
+        //{
 
-            SimpleLineSymbol outlineSymbol = new SimpleLineSymbol(SimpleLineSymbolStyle.Solid, System.Drawing.Color.Red, 4);
+        //    SimpleLineSymbol outlineSymbol = new SimpleLineSymbol(SimpleLineSymbolStyle.Solid, System.Drawing.Color.Red, 4);
 
-            SimpleMarkerSymbol buoyMarker = new SimpleMarkerSymbol(SimpleMarkerSymbolStyle.Circle, System.Drawing.Color.Red, 10);
-            buoyMarker.Outline = outlineSymbol;
+        //    SimpleMarkerSymbol buoyMarker = new SimpleMarkerSymbol(SimpleMarkerSymbolStyle.Circle, System.Drawing.Color.Red, 10);
+        //    buoyMarker.Outline = outlineSymbol;
 
-            Graphic g = new Graphic(point);
-            g.Symbol = buoyMarker;
+        //    Graphic g = new Graphic(point);
+        //    g.Symbol = buoyMarker;
 
-            try
-            {
-                if (_mapView.GraphicsOverlays.Count > 0)
-                {
-                    if (_mapView.GraphicsOverlays[0].Graphics.Count > 0)
-                        _mapView.GraphicsOverlays[0].Graphics.Clear();
-                }
-                _mapView.GraphicsOverlays[0].Graphics.Add(g);
-                if (zoomtoLocation)
-                {
-                   //Envelope env = new Envelope(point.X - 50000, point.Y -50000, point.X + 5000, point.Y+ 5000,new Esri.ArcGISRuntime.Geometry.SpatialReference(4148));
-                   // double tolerance = 10;
-                   // double mapTolerance = tolerance * _mapView.UnitsPerPixel;
-                   // var selectionEnvelope = new Envelope(point.X - mapTolerance, point.Y - mapTolerance, point.X + mapTolerance,
-                   //point.Y + mapTolerance, new Esri.ArcGISRuntime.Geometry.SpatialReference(4148));
+        //    try
+        //    {
+        //        if (_mapView.GraphicsOverlays.Count > 0)
+        //        {
+        //            if (_mapView.GraphicsOverlays[0].Graphics.Count > 0)
+        //                _mapView.GraphicsOverlays[0].Graphics.Clear();
+        //        }
+        //        _mapView.GraphicsOverlays[0].Graphics.Add(g);
+        //        if (zoomtoLocation)
+        //        {
+        //           //Envelope env = new Envelope(point.X - 50000, point.Y -50000, point.X + 5000, point.Y+ 5000,new Esri.ArcGISRuntime.Geometry.SpatialReference(4148));
+        //           // double tolerance = 10;
+        //           // double mapTolerance = tolerance * _mapView.UnitsPerPixel;
+        //           // var selectionEnvelope = new Envelope(point.X - mapTolerance, point.Y - mapTolerance, point.X + mapTolerance,
+        //           //point.Y + mapTolerance, new Esri.ArcGISRuntime.Geometry.SpatialReference(4148));
 
                  
                   
-                    //_map.InitialViewpoint = viewpoint;
+        //            //_map.InitialViewpoint = viewpoint;
 
                    
-                     _mapView.SetViewpointGeometryAsync(point.Extent);
+        //             _mapView.SetViewpointGeometryAsync(point.Extent);
                    
 
 
@@ -259,18 +247,18 @@ namespace POCMobile.Fragments
 
 
 
-                }
+        //        }
                   
                    
-            }
-            catch { }
+        //    }
+        //    catch { }
 
-        }
+        //}
         #endregion
-        public bool OnTouch(View v, MotionEvent e)
-        {
-            return true;
-        }
+        //public bool OnTouch(View v, MotionEvent e)
+        //{
+        //    return true;
+        //}
 
 
         private void InitializeApp()
