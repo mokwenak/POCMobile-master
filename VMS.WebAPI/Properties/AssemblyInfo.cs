@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VMS.WebAPI")]
+[assembly: AssemblyTitle("VMS.WebApi")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VMS.WebAPI")]
+[assembly: AssemblyProduct("VMS.WebApi")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e2a723f7-48c0-49ab-8059-dbe426fb8b9f")]
+[assembly: Guid("73ede85e-8923-4e18-b3b7-e287a34c09eb")]
 
 // Version information for an assembly consists of the following four values:
 //

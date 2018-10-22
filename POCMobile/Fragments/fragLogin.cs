@@ -75,7 +75,7 @@ namespace POCMobile.Fragments
       {
         _lblError.Text = "Username or password is required";
       }
-      else if (_txtUserName.Text == "stewardb" && _txtPassword.Text == "123456")
+      else 
       {
         GetAction action = Config.GetActions.Where(o => o.Code == ActionCode.login).SingleOrDefault();
 
@@ -89,10 +89,7 @@ namespace POCMobile.Fragments
         Console.WriteLine("BtnLogin Calling the service");
         _service.GetObject(this, action, param);
       }
-      else
-      {
-        _lblError.Text = "Invalid username or password";
-      }
+    
       Console.WriteLine("BtnLogin Exit");
 
     }
@@ -108,28 +105,30 @@ namespace POCMobile.Fragments
         serSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         if (resultType == ActionCode.login)
         {
-          var resultObj = JsonConvert.DeserializeObject<ResultObj<User>>(resultRootObject.ToString(), serSettings);
+          var resultObj = JsonConvert.DeserializeObject<ResultObj<bool>>(resultRootObject.ToString(), serSettings);
 
           if (resultObj.isSuccessful)
           {
 
-            _user = JsonConvert.DeserializeObject<ResultObj<User>>(resultRootObject.ToString(), serSettings).Data;
-
-            _mainActivity.RunOnUiThread(() =>
+            if (resultObj.Data == true)
             {
 
-              _lblError.Text = string.Empty;
+              _mainActivity.RunOnUiThread(() =>
+              {
+
+                _lblError.Text = string.Empty;
 
 
-              CurrentUser.UserName = _txtUserName.Text;
-              var trans = FragmentManager.BeginTransaction();
+                CurrentUser.UserName = _txtUserName.Text;
+                var trans = FragmentManager.BeginTransaction();
               // trans.SetCustomAnimations(Resource.Animation.anim_in, Resource.Animation.anim_out);
               _progressBar.Visibility = ViewStates.Visible;
 
-              _mainActivity.ShowSideMenu(false);
-              trans.Replace(Resource.Id.fragmentContainer, new fragMap(), "map").AddToBackStack("map");
-              trans.Commit();
-            });
+                _mainActivity.ShowSideMenu(false);
+                trans.Replace(Resource.Id.fragmentContainer, new fragMap(), "map").AddToBackStack("map");
+                trans.Commit();
+              });
+            }
            
           }
           else
@@ -137,7 +136,7 @@ namespace POCMobile.Fragments
             _mainActivity.RunOnUiThread(() =>
             {
               _progressBar.Visibility = ViewStates.Gone;
-              _lblError.Text = resultObj.Error;
+              _lblError.Text = "Invalid username or password";
             });
           }
         }

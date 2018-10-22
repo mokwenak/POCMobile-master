@@ -51,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:text="stewardb"
+                    android:text=""
                     android:id="@+id/txtUsername"
                     android:hint="Username" />
             </android.support.design.widget.TextInputLayout>
@@ -65,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:text="123456"
+                    android:text=""
                     android:textColor="@color/StatsBlack"
                     android:layout_gravity="center"
                     android:hint="Password" />

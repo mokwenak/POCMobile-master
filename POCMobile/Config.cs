@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using VMS.DataAccess;
 
 namespace POCMobile
 {
@@ -7,6 +6,8 @@ namespace POCMobile
   {
     Undefined,
     login,
+    location,
+    trip,
     AddInformation
   };
   public class PostAction
@@ -46,17 +47,24 @@ namespace POCMobile
     {
       //_baseServiceUrl = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer";
 
-      _baseServiceUrl = "http://localhost:49963/api/";
+      // _baseServiceUrl = "http://localhost:49963/api/";
+      _baseServiceUrl = "http://10.0.2.2/webapi/api/";
+      //_baseServiceUrl = "http://10.131.152.154:8080/cpimobile2/api/";
+
+       _baseServiceUrl = "http://40.84.129.247/vmsapi/api/";
+      
 
 
       //CONFIGURING THE GET ACTIONS
       GetActions = new List<GetAction>();
       GetActions.Add(new GetAction() { Code = ActionCode.login, Url = @"user/login/" });
+     GetActions.Add(new GetAction() { Code = ActionCode.location, Url = @"location/save/" });
+      GetActions.Add(new GetAction() { Code = ActionCode.trip, Url = @"trip/get/" });
 
 
       //CONFIGURING THE POST ACTIONS
       PostActions = new List<PostAction>();
-      PostActions.Add(new PostAction() { Code = ActionCode.AddInformation, Url = @"information/save/" });
+      //PostActions.Add(new PostAction() { Code = ActionCode.location, Url = @"location/save/" });
 
      
     }
@@ -156,5 +164,10 @@ namespace POCMobile
     public static bool Active { get; set; }
     public static string DFBaseMapUrl { get; set; }
 
+  }
+  public class LocationParameters
+  {
+    public string Latitude { get; set; }
+    public string Longtude { get; set; }
   }
 }

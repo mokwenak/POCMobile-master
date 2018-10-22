@@ -2567,8 +2567,8 @@ namespace POCMobile
 			// aapt resource value: 0x7f08005c
 			public const int action_mode_close_button = 2131230812;
 			
-			// aapt resource value: 0x7f0800cf
-			public const int action_settings = 2131230927;
+			// aapt resource value: 0x7f0800c4
+			public const int action_settings = 2131230916;
 			
 			// aapt resource value: 0x7f0800a1
 			public const int action_text = 2131230881;
@@ -2591,11 +2591,11 @@ namespace POCMobile
 			// aapt resource value: 0x7f080038
 			public const int always = 2131230776;
 			
-			// aapt resource value: 0x7f0800ba
-			public const int appname = 2131230906;
+			// aapt resource value: 0x7f0800b3
+			public const int appname = 2131230899;
 			
-			// aapt resource value: 0x7f0800bb
-			public const int appversion = 2131230907;
+			// aapt resource value: 0x7f0800b4
+			public const int appversion = 2131230900;
 			
 			// aapt resource value: 0x7f080056
 			public const int async = 2131230806;
@@ -2612,20 +2612,14 @@ namespace POCMobile
 			// aapt resource value: 0x7f08003d
 			public const int bottom = 2131230781;
 			
-			// aapt resource value: 0x7f0800b8
-			public const int btnAdd = 2131230904;
+			// aapt resource value: 0x7f0800ba
+			public const int btnLogin = 2131230906;
 			
-			// aapt resource value: 0x7f0800b9
-			public const int btnCancel = 2131230905;
+			// aapt resource value: 0x7f0800bd
+			public const int btnSearch = 2131230909;
 			
-			// aapt resource value: 0x7f0800c1
-			public const int btnLogin = 2131230913;
-			
-			// aapt resource value: 0x7f0800b6
-			public const int btnPicture = 2131230902;
-			
-			// aapt resource value: 0x7f0800b5
-			public const int btnScan = 2131230901;
+			// aapt resource value: 0x7f0800be
+			public const int btnStart = 2131230910;
 			
 			// aapt resource value: 0x7f080063
 			public const int buttonPanel = 2131230819;
@@ -2735,12 +2729,6 @@ namespace POCMobile
 			// aapt resource value: 0x7f080054
 			public const int @fixed = 2131230804;
 			
-			// aapt resource value: 0x7f0800c4
-			public const int flblocation = 2131230916;
-			
-			// aapt resource value: 0x7f0800c5
-			public const int flbtnAdd = 2131230917;
-			
 			// aapt resource value: 0x7f080058
 			public const int forever = 2131230808;
 			
@@ -2771,9 +2759,6 @@ namespace POCMobile
 			// aapt resource value: 0x7f08009d
 			public const int imageView = 2131230877;
 			
-			// aapt resource value: 0x7f0800b7
-			public const int img_view = 2131230903;
-			
 			// aapt resource value: 0x7f0800ac
 			public const int info = 2131230892;
 			
@@ -2786,8 +2771,8 @@ namespace POCMobile
 			// aapt resource value: 0x7f080090
 			public const int largeLabel = 2131230864;
 			
-			// aapt resource value: 0x7f0800c0
-			public const int lblError = 2131230912;
+			// aapt resource value: 0x7f0800b9
+			public const int lblError = 2131230905;
 			
 			// aapt resource value: 0x7f080049
 			public const int left = 2131230793;
@@ -2804,11 +2789,11 @@ namespace POCMobile
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;
 			
-			// aapt resource value: 0x7f0800cc
-			public const int log_out = 2131230924;
+			// aapt resource value: 0x7f0800c1
+			public const int log_out = 2131230913;
 			
-			// aapt resource value: 0x7f0800c7
-			public const int masked = 2131230919;
+			// aapt resource value: 0x7f0800c0
+			public const int masked = 2131230912;
 			
 			// aapt resource value: 0x7f0800a5
 			public const int media_actions = 2131230885;
@@ -2825,23 +2810,11 @@ namespace POCMobile
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
 			
-			// aapt resource value: 0x7f0800c8
-			public const int nav_camera = 2131230920;
+			// aapt resource value: 0x7f0800c3
+			public const int nav_send = 2131230915;
 			
-			// aapt resource value: 0x7f0800c9
-			public const int nav_gallery = 2131230921;
-			
-			// aapt resource value: 0x7f0800cb
-			public const int nav_manage = 2131230923;
-			
-			// aapt resource value: 0x7f0800ce
-			public const int nav_send = 2131230926;
-			
-			// aapt resource value: 0x7f0800cd
-			public const int nav_share = 2131230925;
-			
-			// aapt resource value: 0x7f0800ca
-			public const int nav_slideshow = 2131230922;
+			// aapt resource value: 0x7f0800c2
+			public const int nav_share = 2131230914;
 			
 			// aapt resource value: 0x7f08008c
 			public const int nav_view = 2131230860;
@@ -2879,8 +2852,8 @@ namespace POCMobile
 			// aapt resource value: 0x7f08004d
 			public const int pin = 2131230797;
 			
-			// aapt resource value: 0x7f0800c2
-			public const int progressBar1 = 2131230914;
+			// aapt resource value: 0x7f0800bb
+			public const int progressBar1 = 2131230907;
 			
 			// aapt resource value: 0x7f080006
 			public const int progress_circular = 2131230726;
@@ -2890,9 +2863,6 @@ namespace POCMobile
 			
 			// aapt resource value: 0x7f080075
 			public const int radio = 2131230837;
-			
-			// aapt resource value: 0x7f0800c3
-			public const int recycler_view = 2131230915;
 			
 			// aapt resource value: 0x7f08004a
 			public const int right = 2131230794;
@@ -3083,23 +3053,20 @@ namespace POCMobile
 			// aapt resource value: 0x7f080013
 			public const int transition_transform = 2131230739;
 			
-			// aapt resource value: 0x7f0800b4
-			public const int txtIDNumber = 2131230900;
+			// aapt resource value: 0x7f0800b7
+			public const int txtInputLayoutPassword = 2131230903;
 			
-			// aapt resource value: 0x7f0800be
-			public const int txtInputLayoutPassword = 2131230910;
+			// aapt resource value: 0x7f0800b5
+			public const int txtInputLayoutUsername = 2131230901;
+			
+			// aapt resource value: 0x7f0800b8
+			public const int txtPassword = 2131230904;
 			
 			// aapt resource value: 0x7f0800bc
-			public const int txtInputLayoutUsername = 2131230908;
+			public const int txtRefNo = 2131230908;
 			
-			// aapt resource value: 0x7f0800b3
-			public const int txtLocation = 2131230899;
-			
-			// aapt resource value: 0x7f0800bf
-			public const int txtPassword = 2131230911;
-			
-			// aapt resource value: 0x7f0800bd
-			public const int txtUsername = 2131230909;
+			// aapt resource value: 0x7f0800b6
+			public const int txtUsername = 2131230902;
 			
 			// aapt resource value: 0x7f08002d
 			public const int uniform = 2131230765;
@@ -3113,8 +3080,8 @@ namespace POCMobile
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800c6
-			public const int visible = 2131230918;
+			// aapt resource value: 0x7f0800bf
+			public const int visible = 2131230911;
 			
 			// aapt resource value: 0x7f08003c
 			public const int withText = 2131230780;
@@ -3371,16 +3338,10 @@ namespace POCMobile
 			public const int tooltip = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int uiHome = 2130968640;
+			public const int uiLogin = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int uiLocationDialog = 2130968641;
-			
-			// aapt resource value: 0x7f040042
-			public const int uiLogin = 2130968642;
-			
-			// aapt resource value: 0x7f040043
-			public const int uiMap = 2130968643;
+			public const int uiMap = 2130968641;
 			
 			static Layout()
 			{

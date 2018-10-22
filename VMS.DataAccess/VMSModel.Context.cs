@@ -79,6 +79,7 @@ namespace VMS.DataAccess
         public virtual DbSet<vw_aspnet_WebPartState_Paths> vw_aspnet_WebPartState_Paths { get; set; }
         public virtual DbSet<vw_aspnet_WebPartState_Shared> vw_aspnet_WebPartState_Shared { get; set; }
         public virtual DbSet<vw_aspnet_WebPartState_User> vw_aspnet_WebPartState_User { get; set; }
+        public virtual DbSet<VihecleTrackingLog> VihecleTrackingLogs { get; set; }
     
         [DbFunction("Vehicle_ManagementEntities", "fn_GetOffices")]
         public virtual IQueryable<fn_GetOffices_Result> fn_GetOffices(Nullable<int> pROVINCE_ID, Nullable<int> dISTRICT_ID)

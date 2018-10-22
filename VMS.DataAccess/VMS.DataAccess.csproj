@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VMS.DataAccess</RootNamespace>
     <AssemblyName>VMS.DataAccess</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -124,6 +125,7 @@
     <Compile Include="Driver.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Driver\DriverManager.cs" />
     <Compile Include="ds_Districts_20180820_Result.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
@@ -160,6 +162,7 @@
     <Compile Include="GarageCard.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Location\LocationManager.cs" />
     <Compile Include="OffenceType.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
@@ -219,6 +222,7 @@
     <Compile Include="TripOffence.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Trip\TripManager.cs" />
     <Compile Include="User.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
@@ -242,6 +246,9 @@
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="VehicleType.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VihecleTrackingLog.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="VMSModel.Context.cs">

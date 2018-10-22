@@ -67,8 +67,6 @@
   <ItemGroup>
     <Compile Include="Adapters\CustomSpinnerAdapter.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Fragments\fragHome.cs" />
-    <Compile Include="Fragments\FragLocationDialog.cs" />
     <Compile Include="Fragments\fragLogin.cs" />
     <Compile Include="Fragments\fragMap.cs" />
     <Compile Include="MainActivity.cs" />
@@ -99,7 +97,6 @@
     <Compile Include="Model\Workflow.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResultObj.cs" />
     <Compile Include="Services\NetworkReachability.cs" />
     <Compile Include="Services\POCService.cs" />
   </ItemGroup>
@@ -182,11 +179,6 @@
     <AndroidResource Include="Resources\drawable\ButtonSignInStyle.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\uiHome.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\anim\anim_in.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -218,11 +210,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\logout.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\uiLocationDialog.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\uiMap.axml">

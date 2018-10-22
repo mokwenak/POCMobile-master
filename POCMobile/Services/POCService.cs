@@ -3,8 +3,8 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
-using VMS.DataAccess;
 
 namespace POCMobile.Services
 {
@@ -32,6 +32,42 @@ namespace POCMobile.Services
 
         var uri = new Uri(String.Format(Config.BASE_SERVICE_URL + action.Url + parameters, string.Empty));
 
+        //httpClient.DefaultRequestHeaders.Accept.Clear();
+        //httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+        responseMessage = await httpClient.GetAsync(uri).ConfigureAwait(false);
+        if (responseMessage.IsSuccessStatusCode)
+        {
+          JsonSerializerSettings serSettings = new JsonSerializerSettings();
+          serSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+          var data = responseMessage.Content.ReadAsStringAsync();
+
+          handler.HandleServiceResults(data.Result, true, action.Code, string.Empty);
+        }
+        else
+          handler.HandleServiceResults(null, false, action.Code, "Failed to connect to the web server, verify that you have airtime or switch off mobile data to work offline");
+      }
+      catch (Exception ex)
+      {
+        if (ex.Message.Contains("A task was canceled"))
+          handler.HandleServiceResults(null, false, action.Code, "Failed to connect to the web server, verify that you have airtime or switch off mobile data to work offline");
+        else
+          handler.HandleServiceResults(null, false, action.Code, ex.Message);
+      }
+    }
+    public async void GetPost(IServiceDeletegate<object> handler, GetAction action, params object[] prms)
+    {
+      try
+      {
+
+        string parameters = string.Empty;
+        if (prms != null)
+          parameters = String.Join("/", prms);
+
+        var uri = new Uri(String.Format(Config.BASE_SERVICE_URL + action.Url + parameters, string.Empty));
+
+        //httpClient.DefaultRequestHeaders.Accept.Clear();
+        //httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
         responseMessage = await httpClient.GetAsync(uri).ConfigureAwait(false);
         if (responseMessage.IsSuccessStatusCode)
@@ -97,6 +133,7 @@ namespace POCMobile.Services
   public interface IPOCService
   {
     void GetObject(IServiceDeletegate<object> handler, GetAction action, params object[] prms);
+    void GetPost(IServiceDeletegate<object> handler, GetAction action, params object[] prms);
     void PostObject(IPostServiceDelegate<object> handler, PostObject<object> postObject);
   }
   public interface IPostServiceDelegate<T>

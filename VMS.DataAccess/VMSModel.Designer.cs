@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\mokwenak\source\repos\POCMobile-master (1)\POCMobile-master\VMS.DataAccess\VMSModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\stewardb\source\repos\POCMobile-master\VMS.DataAccess\VMSModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
