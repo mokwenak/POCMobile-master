@@ -163,6 +163,7 @@
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Location\LocationManager.cs" />
+    <Compile Include="Model\VehicleTrip.cs" />
     <Compile Include="OffenceType.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
@@ -245,6 +246,7 @@
     <Compile Include="VehicleModel.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="VehicleTrip\VehicleTripManager.cs" />
     <Compile Include="VehicleType.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>

@@ -31,10 +31,10 @@ namespace VMS.WebApi.Controllers
     {
       LocationParameters data = new LocationParameters() { Latitude = lat, Longtude = lon, status=status,tripId= reference };
      
-      JsonSerializerSettings serSettings = new JsonSerializerSettings();
-      serSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+     // JsonSerializerSettings serSettings = new JsonSerializerSettings();
+     // serSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
-     // var data = JsonConvert.DeserializeObject<LocationParameters>(param);
+     //// var data = JsonConvert.DeserializeObject<LocationParameters>(param);
 
       
      
