@@ -13,6 +13,9 @@ namespace POCMobile.Services
     HttpClient httpClient;
     HttpResponseMessage responseMessage;
 
+
+
+
     public POCService()
     {
       httpClient = new HttpClient();

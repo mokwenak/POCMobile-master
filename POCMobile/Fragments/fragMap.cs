@@ -28,7 +28,7 @@ namespace POCMobile.Fragments
     //FragLocationDialog _dialogLocation;
     //FloatingActionButton _flbtnAdd;
     //FloatingActionButton _flbtrack;
-
+    string _Latitude=string.Empty, _longtude=string.Empty;
     Button btnStart;
     Button btnSearch;
 
@@ -45,12 +45,12 @@ namespace POCMobile.Fragments
     {
       base.OnCreate(savedInstanceState);
 
-      InitializeLocationManager();
+    
 
       _mainActivity = (MainActivity)this.Activity;
 
 
-      this._Context = _mainActivity.BaseContext;
+      //this._Context = _mainActivity.BaseContext;
       // Create your fragment here
     }
 
@@ -95,8 +95,13 @@ namespace POCMobile.Fragments
 
 
     }
+    public override void OnActivityCreated(Bundle savedInstanceState)
+    {
+      base.OnActivityCreated(savedInstanceState);
+      InitializeLocationManager();
+    }
 
-    private void BtnSearch_Click(object sender, EventArgs e)
+      private void BtnSearch_Click(object sender, EventArgs e)
     {
       if (txtRefNo.Text != string.Empty)
       {
@@ -105,8 +110,8 @@ namespace POCMobile.Fragments
 
         object[] param = new[] { txtRefNo.Text };
 
-
-        _service = new POCService();
+        if (_service == null)
+          _service = new POCService();
 
         Console.WriteLine("BtnLogin Calling the service");
         _service.GetPost(this, action, param);
@@ -122,22 +127,16 @@ namespace POCMobile.Fragments
       {
         isLoggin = true;
         btnStart.Text = "Stop";
-        UpdateLocation("1");
+        StartLocation("1");
       }else if(btnStart.Text.ToLower()=="stop")
       {
         isLoggin = false;
         btnStart.Text = "Start";
-        StopUpdateLocation();
+       StopUpdateLocation("3");
       }
     }
 
-    public override void OnActivityCreated(Bundle savedInstanceState)
-    {
-      base.OnActivityCreated(savedInstanceState);
-      //Initialize();
-      //GetCurrentLcoation();
-
-    }
+   
 
     //private void _flbtnAdd_Click(object sender, EventArgs e)
     //{
@@ -160,6 +159,8 @@ namespace POCMobile.Fragments
 
       toast.Show();
     }
+
+     
 
     //private void GetCurrentLcoation()
     //{
@@ -193,47 +194,77 @@ namespace POCMobile.Fragments
     
     public void OnLocationChanged(Location location)
     {
-      CurrentLocation.Latitude = location.Latitude;
-      CurrentLocation.Longitude = location.Longitude;
+      _Latitude = location.Latitude.ToString();
+      _longtude = location.Longitude.ToString();
 
       if (isLoggin)
-        UpdateLocation("2");
+      {       
+        GetAction action = Config.GetActions.Where(o => o.Code == ActionCode.location).SingleOrDefault();
+
+        string status = string.Empty;
+        if(firstLog==true)
+        {
+          status = "1";
+        //  StartLocation(location);
+        }else if (lastLog == true)
+        {
+          status = "3";
+        //  StopUpdateLocation(location);
+        }
+        else
+        {
+          status = "2";
+        }
+       
+        object[] param = new[] { _Latitude, _longtude, status, txtRefNo.Text };
+
+        if (_service == null)
+          _service = new POCService();
+        _service.GetPost(this, action, param);
+      }      
+
     }
 
-    public void UpdateLocation(string status)
+    bool lastLog = false;
+    bool firstLog = true;
+
+    public void StartLocation(string status)
     {
       if (isLoggin)
       {
-        if (status == "3")
-          CurrentLocation.Latitude += 0.00001;
-       
-        GetAction action = Config.GetActions.Where(o => o.Code == ActionCode.location).SingleOrDefault();
+        if (_Latitude != string.Empty)
+        {
+          GetAction action = Config.GetActions.Where(o => o.Code == ActionCode.location).SingleOrDefault();
 
+          object[] param = new[] {_Latitude,_longtude, status, txtRefNo.Text };
 
-        object[] param = new[] {  CurrentLocation.Latitude.ToString(), CurrentLocation.Longitude.ToString(),status,txtRefNo.Text };
+          if (_service == null)
+            _service = new POCService();
 
-
-        _service = new POCService();
-
-        Console.WriteLine("BtnLogin Calling the service");
-        _service.GetPost(this, action, param);
+          _service.GetPost(this, action, param);
+          firstLog = false;
+          lastLog = false;
+        }
       }
     }
-    public void StopUpdateLocation()
+    public void StopUpdateLocation(string status)
     {
-     
 
+      if (_Latitude != string.Empty)
+      {
         GetAction action = Config.GetActions.Where(o => o.Code == ActionCode.location).SingleOrDefault();
 
+        object[] param = new[] { _Latitude, _longtude, status, txtRefNo.Text };
 
-        object[] param = new[] { CurrentLocation.Latitude.ToString(), CurrentLocation.Longitude.ToString(), "3", txtRefNo.Text };
+        if (_service == null)
+          _service = new POCService();
 
-
-        _service = new POCService();
-
-        Console.WriteLine("BtnLogin Calling the service");
         _service.GetPost(this, action, param);
-      
+
+        lastLog = true;
+        firstLog = true;
+      }
+
     }
 
     public void OnProviderDisabled(string provider)
@@ -273,7 +304,7 @@ namespace POCMobile.Fragments
       if (locationProvider != null)
       {
 
-        locMgr.RequestLocationUpdates(locationProvider, 2000, 1, this);
+        locMgr.RequestLocationUpdates(locationProvider, 100, 1, this);
       }
     }
 
@@ -319,8 +350,11 @@ namespace POCMobile.Fragments
             }
             else
             {
-              btnStart.Enabled = false;
-              ShowToastMessage("Trip was not found");
+              _mainActivity.RunOnUiThread(() =>
+              {
+                btnStart.Enabled = false;
+                ShowToastMessage("Trip was not found");
+              });
             }
 
           }

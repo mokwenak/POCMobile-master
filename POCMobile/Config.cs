@@ -48,7 +48,7 @@ namespace POCMobile
       //_baseServiceUrl = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer";
 
       // _baseServiceUrl = "http://localhost:49963/api/";
-      _baseServiceUrl = "http://10.0.2.2/webapi/api/";
+      //_baseServiceUrl = "http://10.0.2.2/webapi/api/";
       //_baseServiceUrl = "http://10.131.152.154:8080/cpimobile2/api/";
 
        _baseServiceUrl = "http://40.84.129.247/vmsapi/api/";
@@ -97,15 +97,15 @@ namespace POCMobile
   }
   public static class CurrentLocation
   {
-    private static double _latitude;
-    private static double _logitude;
+    private static string _latitude;
+    private static string _logitude;
     private static string _address;
-    public static double Latitude
+    public static string Latitude
     {
       get { return _latitude; }
       set { _latitude = value; }
     }
-    public static double Longitude
+    public static string Longitude
     {
       get { return _logitude; }
       set { _logitude = value; }
